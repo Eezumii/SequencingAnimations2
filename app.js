@@ -1,15 +1,17 @@
-const flightPath ={
+const flightPath = {
     curviness: 1.25,
     autorotate: true,
-    values: [{x:100, y:-20}, 
-        {x:300, y:10}, 
-        {x:500, y:100} , 
-        {x:750, y:-100}, 
-        {x:350, y:-50} , 
-        {x:600, y:100}  , 
-        {x:800, y:0}, 
-        {x: window.innerWidth, y:-250}]
-}
+    values: [
+        {x: 100, y: -20},
+        {x: 300, y: 10},
+        {x: 500, y: 100},
+        {x: 750, y: -100},
+        {x: 350, y: -50},
+        {x: 600, y: 100},
+        {x: 800, y: 0},
+        {x: window.innerWidth, y: -250}
+    ]
+};
 
 const tween = new TimelineLite();
 
@@ -20,16 +22,8 @@ tween.add(
     })
 );
 
-const controller = new ScrollMagic.Controller();
-
-const scene = new ScrollMagic.Scene({
-    triggerElement: ".animation",
-    duration: 1000,
-    triggerHook:0,
-    reverse: true
-})
-
-.setTween(tween)
-.addIndicators()
-.setPin(".animation")
-.addTo(controller);
+// 确保在DOM元素加载完成后运行
+document.addEventListener("DOMContentLoaded", function() {
+    // 开始动画
+    tween.play();
+});
